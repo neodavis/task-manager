@@ -1,0 +1,9 @@
+<form [formGroup]="taskForm" (ngSubmit)="submitForm()">
+  <input type="text" [formControl]="taskForm.controls.name">
+  <select [formControl]="taskForm.controls.taskStatus">
+    <option value="InProgress">In Progress</option>
+    <option value="Backlog">Backlog</option>
+  </select>
+
+  <button>Submit</button>
+</form>

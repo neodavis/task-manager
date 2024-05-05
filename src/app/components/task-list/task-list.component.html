@@ -1,0 +1,7 @@
+<input type="search" [formControl]="searchControl">
+
+@for (task of tasksFilteredBySearch(); track task.id) {
+  {{ task.name }}
+} @empty {
+  Empty list
+}
