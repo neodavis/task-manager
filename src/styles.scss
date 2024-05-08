@@ -5,9 +5,34 @@
 .form-control {
   @apply
   border border-zinc-300 rounded-md px-2 py-1 placeholder-zinc-400
-  focus-visible:outline-0 focus-visible:border-blue-400
+  focus-visible:outline-0 focus-visible:border-blue-400;
+
+  &.ng-invalid.ng-dirty {
+    @apply border-red-700;
+  }
 }
 
 .button-primary {
-  @apply bg-blue-400 rounded-md px-2 py-1 text-white hover:bg-blue-500
+  @apply bg-blue-400 rounded-md px-2 py-1 text-white hover:bg-blue-500 cursor-pointer;
+
+  &[disabled] {
+    @apply bg-blue-300 cursor-default;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-200;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-300;
+  border-radius: 10px;
+  outline: 2px solid white;
 }

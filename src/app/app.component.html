@@ -1,4 +1,4 @@
 <app-wrapper>
-  <app-task-form (formSubmitted)="updateTasksList($event)"></app-task-form>
-  <app-task-board [tasks]="tasks"></app-task-board>
+  <app-task-form class="mt-2" (formSubmitted)="updateTasksList($event)"></app-task-form>
+  <app-task-board class="h-full max-h-[calc(100vh-195px)] block mt-2" [tasks]="tasks"></app-task-board>
 </app-wrapper>

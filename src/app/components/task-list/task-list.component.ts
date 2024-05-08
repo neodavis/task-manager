@@ -1,12 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed, DestroyRef, inject,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  Injector,
   Input,
   OnInit,
   Signal,
   signal,
-  WritableSignal
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -31,8 +34,11 @@ export class TaskListComponent implements OnInit {
 
   private search = signal<string>('');
   private destroyRef = inject(DestroyRef);
+  private injector = inject(Injector);
 
   ngOnInit() {
+    effect(() => this.tasks().length ? this.searchControl.enable() : this.searchControl.disable(), { injector: this.injector })
+
     this.searchControl.valueChanges
       .pipe(
         tap((value) => this.search.set(value ?? '')),

@@ -1,7 +1,11 @@
-<div class="flex gap-1">
+<div class="flex gap-2 overflow-x-auto h-full">
   <app-task-list class="w-full" [taskStatus]="TaskStatus.Backlog" [tasks]="tasksInBacklog"></app-task-list>
+  <div class="w-2 bg-neutral-200"></div>
   <app-task-list class="w-full" [taskStatus]="TaskStatus.InProgress" [tasks]="tasksInProgress"></app-task-list>
+  <div class="w-2 bg-neutral-200"></div>
   <app-task-list class="w-full" [taskStatus]="TaskStatus.Blocked" [tasks]="tasksInBlocked"></app-task-list>
+  <div class="w-2 bg-neutral-200"></div>
   <app-task-list class="w-full" [taskStatus]="TaskStatus.OnHold" [tasks]="tasksOnHold"></app-task-list>
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.Complete" [tasks]="tasksInComplete"></app-task-list>
+  <div class="w-2 bg-neutral-200"></div>
+  <app-task-list class="w-full" [taskStatus]="TaskStatus.Completed" [tasks]="tasksInComplete"></app-task-list>
 </div>
