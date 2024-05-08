@@ -1,9 +1,13 @@
-<form [formGroup]="taskForm" (ngSubmit)="submitForm()">
-  <input type="text" [formControl]="taskForm.controls.name">
-  <select [formControl]="taskForm.controls.taskStatus">
-    <option value="InProgress">In Progress</option>
-    <option value="Backlog">Backlog</option>
-  </select>
+<form class="flex flex-col" [formGroup]="taskForm" (ngSubmit)="submitForm()">
+  <input class="form-control mb-1" type="text" placeholder="Enter task name" [formControl]="taskForm.controls.name">
+  <div class="flex gap-1">
+    <select class="form-control hover:cursor-pointer w-full" [formControl]="taskForm.controls.taskStatus">
+      <option [value]="TaskStatus.Backlog">Backlog</option>
+      <option [value]="TaskStatus.InProgress">In Progress</option>
+      <option [value]="TaskStatus.Blocked">Blocked</option>
+      <option [value]="TaskStatus.OnHold">OnHold</option>
+    </select>
 
-  <button>Submit</button>
+    <button class="button-primary w-full" [disabled]="taskForm.invalid">Submit</button>
+  </div>
 </form>
