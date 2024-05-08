@@ -1,5 +1,15 @@
-<p>app-wrapper start!</p>
+<div class="h-screen flex justify-between flex-col">
+  <!-- TODO: impl header template -->
+  <header class="w-full">
+    <p>app-wrapper start!</p>
+  </header>
 
-<ng-content></ng-content>
+  <div class="h-full w-4/6 self-center">
+    <ng-content></ng-content>
+  </div>
 
-<p>app-wrapper end!</p>
+  <!-- TODO: impl footer template -->
+  <footer class="w-full">
+    <p>app-wrapper end!</p>
+  </footer>
+</div>

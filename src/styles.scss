@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-control {
+  @apply
+  border border-zinc-300 rounded-md px-2 py-1 placeholder-zinc-400
+  focus-visible:outline-0 focus-visible:border-blue-400
+}
+
+.button-primary {
+  @apply bg-blue-400 rounded-md px-2 py-1 text-white hover:bg-blue-500
+}

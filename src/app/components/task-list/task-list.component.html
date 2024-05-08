@@ -1,7 +1,11 @@
-<input type="search" [formControl]="searchControl">
+<div class="flex flex-col">
+  {{ taskStatus }}
+  <input class="form-control" type="text" placeholder="Search by name" [formControl]="searchControl">
 
-@for (task of tasksFilteredBySearch(); track task.id) {
-  {{ task.name }}
-} @empty {
-  Empty list
-}
+  @for (task of tasksFilteredBySearch(); track task.id) {
+    <app-task [task]="task"></app-task>
+  } @empty {
+    Empty list
+  }
+</div>
+

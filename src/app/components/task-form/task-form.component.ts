@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskStatus, Task } from '../../models';
 
 interface TaskForm {
-  name: string;
-  taskStatus: TaskStatus;
+  name: FormControl<string>;
+  taskStatus: FormControl<TaskStatus>;
 }
 
 @Component({
@@ -17,8 +17,8 @@ export class TaskFormComponent {
   @Output() formSubmitted = new EventEmitter<Pick<Task, 'name' | 'taskStatus'>>();
 
   readonly taskForm = this.formBuilder.group<TaskForm>({
-    name: '',
-    taskStatus: TaskStatus.Backlog,
+    name: this.formBuilder.control('', [Validators.required]),
+    taskStatus: this.formBuilder.control(TaskStatus.Backlog),
   })
 
   @Input() set formData(formData: Pick<Task, 'name' | 'taskStatus'>) {
@@ -30,4 +30,6 @@ export class TaskFormComponent {
   submitForm() {
     this.formSubmitted.emit(this.taskForm.getRawValue())
   }
+
+  protected readonly TaskStatus = TaskStatus;
 }

@@ -1,12 +1,19 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppWrapperComponent, TaskFormComponent, TaskListComponent } from './components';
+import { AppWrapperComponent, TaskBoardComponent, TaskFormComponent, TaskListComponent } from './components';
 import { Task } from './models';
+
+const COMPONENTS = [
+  AppWrapperComponent,
+  TaskBoardComponent,
+  TaskListComponent,
+  TaskFormComponent,
+]
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppWrapperComponent, TaskListComponent, TaskFormComponent],
+  imports: [RouterOutlet, COMPONENTS],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
