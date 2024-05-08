@@ -16,6 +16,7 @@ interface TaskForm {
 export class TaskFormComponent {
   @Output() formSubmitted = new EventEmitter<Pick<Task, 'name' | 'taskStatus'>>();
 
+  readonly TaskStatus = TaskStatus;
   readonly taskForm = this.formBuilder.group<TaskForm>({
     name: this.formBuilder.control('', [Validators.required]),
     taskStatus: this.formBuilder.control(TaskStatus.Backlog),
@@ -30,6 +31,4 @@ export class TaskFormComponent {
   submitForm() {
     this.formSubmitted.emit(this.taskForm.getRawValue())
   }
-
-  protected readonly TaskStatus = TaskStatus;
 }

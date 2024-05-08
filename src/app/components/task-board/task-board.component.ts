@@ -15,7 +15,7 @@ export class TaskBoardComponent {
 
   tasksInBacklog = this.getTasksByStatus(TaskStatus.Backlog);
   tasksInProgress = this.getTasksByStatus(TaskStatus.InProgress);
-  tasksInComplete = this.getTasksByStatus(TaskStatus.Complete);
+  tasksInComplete = this.getTasksByStatus(TaskStatus.Completed);
   tasksInBlocked = this.getTasksByStatus(TaskStatus.Blocked);
   tasksOnHold = this.getTasksByStatus(TaskStatus.OnHold);
 

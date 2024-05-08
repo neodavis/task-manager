@@ -1,7 +1,7 @@
 export enum TaskStatus {
   Backlog = 'Backlog',
-  InProgress = 'InProgress',
+  InProgress = 'In Progress',
   Blocked = 'Blocked',
-  OnHold = 'OnHold',
-  Complete = 'Complete',
+  OnHold = 'On Hold',
+  Completed = 'Completed',
 }
