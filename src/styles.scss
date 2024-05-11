@@ -12,11 +12,27 @@
   }
 }
 
-.button-primary {
-  @apply bg-blue-400 rounded-md px-2 py-1 text-white hover:bg-blue-500 cursor-pointer;
+.button {
+  @apply rounded-md px-2 py-1 text-white cursor-pointer;
 
   &[disabled] {
-    @apply bg-blue-300 cursor-default;
+    @apply cursor-default;
+  }
+}
+
+.button-primary {
+  @apply button bg-blue-400 hover:bg-blue-500;
+
+  &[disabled] {
+    @apply button bg-blue-300;
+  }
+}
+
+.button-danger {
+  @apply button bg-red-700 hover:bg-red-800;
+
+  &[disabled] {
+    @apply button bg-red-600;
   }
 }
 

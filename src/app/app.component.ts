@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppWrapperComponent, TaskBoardComponent, TaskFormComponent, TaskListComponent } from './components';
 import { Task } from './models';
+import { TaskService } from './services';
 
 const COMPONENTS = [
   AppWrapperComponent,
@@ -16,19 +17,22 @@ const COMPONENTS = [
   imports: [RouterOutlet, COMPONENTS],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TaskService],
 })
 export class AppComponent {
-  tasks = signal<Task[]>([]);
+  tasks = this.taskService.tasks;
 
-  updateTasksList(taskUpdateEvent: Pick<Task, "name" | "taskStatus">) {
-    const { name, taskStatus } = taskUpdateEvent;
-    const task: Task = {
-      id: String(new Date().getTime()),
-      name,
-      taskStatus,
-      createdDate: new Date().getTime(),
-    }
+  constructor(private taskService: TaskService) { }
 
-    this.tasks.update(tasks => [...tasks, task]);
+  editTask(task: Task) {
+    this.taskService.editTask(task);
+  }
+
+  createTask(task: Task) {
+    this.taskService.createTask(task);
+  }
+
+  deleteTask(id: string) {
+    this.taskService.deleteTask(id);
   }
 }

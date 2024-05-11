@@ -1,4 +1,9 @@
 <app-wrapper>
-  <app-task-form class="mt-2" (formSubmitted)="updateTasksList($event)"></app-task-form>
-  <app-task-board class="h-full max-h-[calc(100vh-195px)] block mt-2" [tasks]="tasks"></app-task-board>
+  <app-task-form class="mt-2" (formSubmitted)="createTask($event)"></app-task-form>
+  <app-task-board
+    class="h-full max-h-[calc(100vh-195px)] block mt-2"
+    [tasks]="tasks"
+    (taskEdited)="editTask($event)"
+    (taskDeleted)="deleteTask($event)"
+  ></app-task-board>
 </app-wrapper>

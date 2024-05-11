@@ -1,11 +1,11 @@
 <div class="flex flex-col">
-  <h6 class="text-center">{{ taskStatus }}</h6>
+  <h6 class="text-center font-bold">{{ taskStatus }}</h6>
   <input class="form-control" type="text" placeholder="Search by name" [formControl]="searchControl">
 
   @for (task of tasksFilteredBySearch(); track task.id) {
-    <app-task [task]="task"></app-task>
+    <app-task cdkDrag [cdkDragData]="task" [task]="task" (taskDeleted)="taskDeleted.emit($event)"></app-task>
   } @empty {
-    Empty list
+    List is empty
   }
 </div>
 
