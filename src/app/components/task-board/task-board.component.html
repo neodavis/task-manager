@@ -1,11 +1,60 @@
-<div class="flex gap-2 overflow-x-auto h-full">
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.Backlog" [tasks]="tasksInBacklog"></app-task-list>
+<div cdkDropListGroup class="flex gap-2 overflow-x-auto h-full">
+  <app-task-list
+    cdkDropList
+    #backlog
+    class="w-full"
+    [cdkDropListData]="tasksInBacklog()"
+    [taskStatus]="TaskStatus.Backlog"
+    [tasks]="tasksInBacklog"
+    (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Backlog)"
+    (taskDeleted)="taskDeleted.emit($event)"
+  ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.InProgress" [tasks]="tasksInProgress"></app-task-list>
+
+  <app-task-list
+    cdkDropList
+    #progress
+    class="w-full"
+    [cdkDropListData]="tasksInProgress()"
+    [taskStatus]="TaskStatus.InProgress"
+    [tasks]="tasksInProgress"
+    (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.InProgress)"
+    (taskDeleted)="taskDeleted.emit($event)"
+  ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.Blocked" [tasks]="tasksInBlocked"></app-task-list>
+
+  <app-task-list
+    cdkDropList
+    #blocked
+    class="w-full"
+    [cdkDropListData]="tasksInBlocked()"
+    [taskStatus]="TaskStatus.Blocked"
+    [tasks]="tasksInBlocked"
+    (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Blocked)"
+    (taskDeleted)="taskDeleted.emit($event)"
+  ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.OnHold" [tasks]="tasksOnHold"></app-task-list>
+
+  <app-task-list
+    cdkDropList
+    #hold
+    class="w-full"
+    [cdkDropListData]="tasksOnHold()"
+    [taskStatus]="TaskStatus.OnHold"
+    [tasks]="tasksOnHold"
+    (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.OnHold)"
+    (taskDeleted)="taskDeleted.emit($event)"
+  ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
-  <app-task-list class="w-full" [taskStatus]="TaskStatus.Completed" [tasks]="tasksInComplete"></app-task-list>
+
+  <app-task-list
+    cdkDropList
+    #completed
+    class="w-full"
+    [cdkDropListData]="tasksInComplete()"
+    [taskStatus]="TaskStatus.Completed"
+    [tasks]="tasksInComplete"
+    (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Completed)"
+    (taskDeleted)="taskDeleted.emit($event)"
+  ></app-task-list>
 </div>

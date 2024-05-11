@@ -14,7 +14,7 @@ interface TaskForm {
   templateUrl: './task-form.component.html',
 })
 export class TaskFormComponent {
-  @Output() formSubmitted = new EventEmitter<Pick<Task, 'name' | 'taskStatus'>>();
+  @Output() formSubmitted = new EventEmitter<Task>();
 
   readonly TaskStatus = TaskStatus;
   readonly taskForm = this.formBuilder.group<TaskForm>({
@@ -22,13 +22,17 @@ export class TaskFormComponent {
     taskStatus: this.formBuilder.control(TaskStatus.Backlog),
   })
 
-  @Input() set formData(formData: Pick<Task, 'name' | 'taskStatus'>) {
-    this.taskForm.patchValue(formData);
-  }
-
   constructor(private formBuilder: NonNullableFormBuilder) { }
 
   submitForm() {
-    this.formSubmitted.emit(this.taskForm.getRawValue())
+    const { name, taskStatus } = this.taskForm.getRawValue();
+    const createdTask: Task = {
+      name,
+      taskStatus,
+      id: String(new Date().getTime()),
+      createdDate: new Date().getTime(),
+    }
+
+    this.formSubmitted.emit(createdTask)
   }
 }

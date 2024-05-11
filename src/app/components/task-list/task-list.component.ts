@@ -3,11 +3,11 @@ import {
   Component,
   computed,
   DestroyRef,
-  effect,
+  effect, EventEmitter,
   inject,
   Injector,
   Input,
-  OnInit,
+  OnInit, Output,
   Signal,
   signal,
 } from '@angular/core';
@@ -17,17 +17,20 @@ import { tap } from 'rxjs';
 
 import { Task, TaskStatus } from '../../models';
 import { TaskComponent } from '../task/task.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [ReactiveFormsModule, TaskComponent],
+  imports: [ReactiveFormsModule, TaskComponent, DragDropModule],
   templateUrl: './task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListComponent implements OnInit {
   @Input({ required: true }) taskStatus!: TaskStatus;
   @Input({ required: true }) tasks!: Signal<Task[]>;
+
+  @Output() taskDeleted = new EventEmitter<string>();
 
   tasksFilteredBySearch = computed(() => this.tasks().filter(task => task.name.includes(this.search().trim())))
   searchControl = new FormControl<string>('');

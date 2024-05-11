@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Task } from '../../models';
 
@@ -10,4 +10,6 @@ import { Task } from '../../models';
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
+
+  @Output() taskDeleted = new EventEmitter<string>();
 }
