@@ -1,31 +1,8 @@
 <div class="flex items-center mt-1">
-  @if (!editMode()) {
-    <div class="border px-2 py-1 rounded-md w-full">
-      {{ task.name }}
-    </div>
-
-    <button class="button-primary w-11 h-full ml-1" (click)="changeEditMode(true)">
-      <i class="fa-solid fa-pen-to-square"></i>
-    </button>
-
-    <button class="button-danger w-11 h-full ml-1" (click)="taskDeleted.emit(task.id)">
-      <i class="fa-solid fa-trash"></i>
-    </button>
-  } @else {
-    <input
-      type="text"
-      id="name-control"
-      class="form-control w-full"
-      placeholder="Enter task name"
-      [formControl]="nameControl"
-    >
-
-    <button class="button-primary w-11 h-full ml-1" (click)="applyEditChanges()">
-      <i class="fa-solid fa-floppy-disk"></i>
-    </button>
-
-    <button class="button-danger w-11 h-full ml-1" (click)="changeEditMode(false)">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  }
+  <div class="border px-2 py-1 rounded-md w-full">
+    {{ task.name }}
+  </div>
+  <button class="button-danger h-full ml-1" (click)="taskDeleted.emit(task.id)">
+    <i class="fa-solid fa-trash"></i>
+  </button>
 </div>

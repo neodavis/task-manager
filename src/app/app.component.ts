@@ -24,7 +24,7 @@ export class AppComponent {
 
   constructor(private taskService: TaskService) { }
 
-  editTask(task: Partial<Task>) {
+  editTask(task: Task) {
     this.taskService.editTask(task);
   }
 
