@@ -31,6 +31,7 @@ export class TaskListComponent implements OnInit {
   @Input({ required: true }) tasks!: Signal<Task[]>;
 
   @Output() taskDeleted = new EventEmitter<string>();
+  @Output() taskEdited = new EventEmitter<Partial<Task>>();
 
   tasksFilteredBySearch = computed(() => this.tasks().filter(task => task.name.includes(this.search().trim())))
   searchControl = new FormControl<string>('');
