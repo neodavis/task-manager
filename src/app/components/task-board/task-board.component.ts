@@ -14,8 +14,8 @@ import { CdkDragDrop, CdkDropList, DragDropModule, moveItemInArray, transferArra
 export class TaskBoardComponent {
   @Input({ required: true }) tasks!: Signal<Task[]>;
 
-  @Output() taskEdited = new EventEmitter<Task>();
   @Output() taskDeleted = new EventEmitter<string>();
+  @Output() taskEdited = new EventEmitter<Partial<Task>>();
 
   tasksInBacklog = this.getTasksByStatus(TaskStatus.Backlog);
   tasksInProgress = this.getTasksByStatus(TaskStatus.InProgress);
