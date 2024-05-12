@@ -7,6 +7,7 @@
     [taskStatus]="TaskStatus.Backlog"
     [tasks]="tasksInBacklog"
     (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Backlog)"
+    (taskEdited)="taskEdited.emit($event)"
     (taskDeleted)="taskDeleted.emit($event)"
   ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
@@ -19,6 +20,7 @@
     [taskStatus]="TaskStatus.InProgress"
     [tasks]="tasksInProgress"
     (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.InProgress)"
+    (taskEdited)="taskEdited.emit($event)"
     (taskDeleted)="taskDeleted.emit($event)"
   ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
@@ -31,6 +33,7 @@
     [taskStatus]="TaskStatus.Blocked"
     [tasks]="tasksInBlocked"
     (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Blocked)"
+    (taskEdited)="taskEdited.emit($event)"
     (taskDeleted)="taskDeleted.emit($event)"
   ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
@@ -43,6 +46,7 @@
     [taskStatus]="TaskStatus.OnHold"
     [tasks]="tasksOnHold"
     (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.OnHold)"
+    (taskEdited)="taskEdited.emit($event)"
     (taskDeleted)="taskDeleted.emit($event)"
   ></app-task-list>
   <div class="w-2 bg-neutral-200"></div>
@@ -55,6 +59,7 @@
     [taskStatus]="TaskStatus.Completed"
     [tasks]="tasksInComplete"
     (cdkDropListDropped)="moveIntoStatus($event, TaskStatus.Completed)"
+    (taskEdited)="taskEdited.emit($event)"
     (taskDeleted)="taskDeleted.emit($event)"
   ></app-task-list>
 </div>

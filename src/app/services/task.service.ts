@@ -18,12 +18,16 @@ export class TaskService implements ITaskService {
     return this._tasks.asReadonly();
   }
 
-  editTask(task: Task) {
+  editTask(task: Partial<Task>) {
     this._tasks.update(tasks => {
       const existingTaskIndex = tasks.findIndex(item => item.id === task.id);
       const updatedTasks = [...tasks];
 
-      updatedTasks[existingTaskIndex] = task;
+      updatedTasks[existingTaskIndex] = {
+        ...updatedTasks[existingTaskIndex],
+        ...task,
+        modifiedDate: new Date().getTime(),
+      };
 
       return updatedTasks;
     });

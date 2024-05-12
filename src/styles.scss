@@ -13,7 +13,7 @@
 }
 
 .button {
-  @apply rounded-md px-2 py-1 text-white cursor-pointer;
+  @apply rounded-md border border-transparent px-2 py-1 text-white cursor-pointer;
 
   &[disabled] {
     @apply cursor-default;
