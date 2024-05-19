@@ -1,31 +1,47 @@
-<div class="flex items-center mt-1">
-  @if (!editMode()) {
-    <div class="border px-2 py-1 rounded-md w-full">
-      {{ task.name }}
-    </div>
+<div class="mt-1 border px-2 py-1 rounded-md">
+  <div class="flex items-center">
+    @if (!editMode()) {
+      <span class="w-full">{{ task.name }}</span>
 
-    <button class="button-primary w-11 h-full ml-1" (click)="changeEditMode(true)">
-      <i class="fa-solid fa-pen-to-square"></i>
-    </button>
+      <button class="button-primary w-11 h-full ml-1" (click)="changeEditMode(true)">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
 
-    <button class="button-danger w-11 h-full ml-1" (click)="taskDeleted.emit(task.id)">
-      <i class="fa-solid fa-trash"></i>
-    </button>
-  } @else {
-    <input
-      type="text"
-      id="name-control"
-      class="form-control w-full"
-      placeholder="Enter task name"
-      [formControl]="nameControl"
-    >
+      <button class="button-danger w-11 h-full ml-1" (click)="taskDeleted.emit(task.id)">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    } @else {
+      <input
+        type="text"
+        id="name-control"
+        class="form-control w-full"
+        placeholder="Enter task name"
+        [formControl]="nameControl"
+      >
 
-    <button class="button-primary w-11 h-full ml-1" (click)="applyEditChanges()">
-      <i class="fa-solid fa-floppy-disk"></i>
-    </button>
+      <button class="button-primary w-11 h-full ml-1" [disabled]="nameControl.value === task.name" (click)="applyEditChanges()">
+        <i class="fa-solid fa-floppy-disk"></i>
+      </button>
 
-    <button class="button-danger w-11 h-full ml-1" (click)="changeEditMode(false)">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  }
+      <button class="button-danger w-11 h-full ml-1" (click)="changeEditMode(false)">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    }
+  </div>
+  <ul class="p-0 m-0">
+    <li class="break-all">
+      <span class="font-bold">Description:</span>
+      {{ task.description }}
+    </li>
+    <li>
+      <span class="font-bold">Created At:</span>
+      {{ task.createdDate | date: 'dd/mm, HH:mm:ss' }}
+    </li>
+    @if (task.modifiedDate) {
+      <li>
+        <span class="font-bold">Modified At:</span>
+        {{ task.modifiedDate | date: 'dd/mm, HH:mm:ss' }}
+      </li>
+    }
+  </ul>
 </div>
