@@ -1,5 +1,12 @@
 <form class="flex flex-col" [formGroup]="taskForm" (ngSubmit)="submitForm()">
   <input class="form-control mb-1" type="text" placeholder="Enter task name" [formControl]="taskForm.controls.name">
+
+  <textarea
+    class="form-control h-32 resize-none mb-1 w-100"
+    placeholder="Enter task description"
+    [formControl]="taskForm.controls.description"
+  ></textarea>
+
   <div class="flex gap-1">
     <select class="form-control hover:cursor-pointer w-full" [formControl]="taskForm.controls.taskStatus">
       <option [value]="TaskStatus.Backlog">Backlog</option>

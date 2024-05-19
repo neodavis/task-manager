@@ -11,13 +11,14 @@ import {
 
 import { Task } from '../../models';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-task',
   standalone: true,
   templateUrl: './task.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
@@ -39,7 +40,7 @@ export class TaskComponent {
   }
 
   applyEditChanges() {
-    const editedTask = {
+    const editedTask: Task = {
       ...this.task,
       name: this.nameControl.value ?? '',
     }
